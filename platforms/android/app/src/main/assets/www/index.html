@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="js/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#config-web-app -->
+		 
+		<!-- include only the Firebase features as you need -->
+		<script  src="js/firebase-auth.js"></script>
+		<script  src="js/firebase-database.js"></script>
+		<script  src="js/firebase-messaging.js"></script>
+		<script  src="js/firebase-storage.js"></script>
+		<!-- initialize the SDK after all desired features are loaded -->
+		<script  src="js/init.js"></script>
+		<script  src="js/jquery.js"></script>	
+
+		<!--Bootstrap CSS-->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		
+		<!--DataTable JS-->
+		<script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script  src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
+		<script  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+		
+		<!--DataTable CSS-->
+		<link href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdn.datatables.net/rowreorder/1.2.5/css/rowReorder.dataTables.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css">
+
+		<!--FA CSS-->
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!--Bootstrap JS-->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			
+		<!--Custom CSS-->			
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<title>My Firebase App</title>
+    </head>
+    <body>
+<div class="container-fluid">
+	<!--Registration Form-->
+	<form id="register">
+	  <h1>Register</h1>
+	  <div class="form-group">
+		<label >First Name</label>
+		<input id="fname" type="text" class="form-control" placeholder="First Name" required>
+	  </div>
+	  <div class="form-group">
+		<label>Last Name</label>
+		<input id="lname" type="text" class="form-control" placeholder="Last Name" required>
+	  </div>
+	  <div class="form-group">
+		<label >Username</label>
+		<input id="username" type="text" class="form-control" placeholder="Username" required>
+	  </div>
+	  <div class="form-group">
+		<label >Password</label>
+		<input id="password" type="password" class="form-control" placeholder="Password" required>
+	  
+	  
+	  <div class="form-group">
+		<input id="uploadfile" type='file' />
+		<img class="img-fluid" id="myImg" src="img/user.png" alt="your image" >	  
+	  </div>
+	  
+	  <button id="addBtn" type="button" class="btn btn-primary">Submit</button>
+	</form>
+
+	<!--Responsive Table-->
+	<table id="myTable" class="table display nowrap" >
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Profile</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody id="result">
+		</tbody>
+	</table>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Update Info</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<form>
+			  <input id="u_key" type="text" readonly >
+			  <div class="form-group">
+				<label >First Name</label>
+				<input id="u_fname" type="text" class="form-control" placeholder="First Name" required>
+			  </div>
+			  <div class="form-group">
+				<label>Last Name</label>
+				<input id="u_lname" type="text" class="form-control" placeholder="Last Name" required>
+			  </div>
+			  <div class="form-group">
+				<label >Username</label>
+				<input id="u_username" type="text" class="form-control" placeholder="Username" required>
+			  </div>
+			  <div class="form-group">
+				<label >Password</label>
+				<input id="u_password" type="password" class="form-control" placeholder="Password" required>
+			  </div>
+			</form>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button id="updateBtn" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
+
+        <!--<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>-->
+		<script src="js/custom.js"></script>
+    </body>
+</html>
+

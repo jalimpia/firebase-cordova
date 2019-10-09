@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="js/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#config-web-app -->
+		 
+		<!-- include only the Firebase features as you need -->
+		<script  src="js/firebase-auth.js"></script>
+		<script  src="js/firebase-database.js"></script>
+		<script  src="js/firebase-messaging.js"></script>
+		<script  src="js/firebase-storage.js"></script>
+		<!-- initialize the SDK after all desired features are loaded -->
+		<script  src="js/init.js"></script>
+		<script  src="js/jquery.js"></script>	
+
+		<!--Bootstrap CSS-->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		
+		<!--DataTable JS-->
+		<script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script  src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
+		<script  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+		
+		<!--DataTable CSS-->
+		<link href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdn.datatables.net/rowreorder/1.2.5/css/rowReorder.dataTables.min.css" rel="stylesheet" type="text/css">
+		<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css">
+
+		<!--FA CSS-->
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!--Bootstrap JS-->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			
+		<!--Custom CSS-->			
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+		<title>NSFH - Not Safe for Hungry</title>
+    </head>
+    <body>
+
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">NSFH</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item cta mr-2 mt-2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#LoginForm">Sign In</a></li>
+			  <li class="nav-item cta mt-2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#RegisterForm">Register</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <section class="home-slider owl-carousel js-fullheight">
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg_1.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Not Safe for Hungry</span>
+              <h1 class="mb-4">Best Restaurant</h1>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg_2.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Not Safe for Hungry</span>
+              <h1 class="mb-4">Nutritious &amp; Tasty</h1>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image: url(images/bg_3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Not Safe for Hungry</span>
+              <h1 class="mb-4">Delicious Specialties</h1>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container-fluid">
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="featured">
+    					<div class="row">
+    						<div class="col-md-3">
+    							<div class="featured-menus ftco-animate">
+			              <div class="menu-img img" style="background-image: url(images/breakfast-1.jpg);"></div>
+			              <div class="text text-center">
+		                  <h3>Grilled Beef with potatoes</h3>
+				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+			              </div>
+			            </div>
+    						</div>
+    						<div class="col-md-3">
+    							<div class="featured-menus ftco-animate">
+			              <div class="menu-img img" style="background-image: url(images/breakfast-2.jpg);"></div>
+			              <div class="text text-center">
+		                  <h3>Grilled Beef with potatoes</h3>
+				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+			              </div>
+			            </div>
+    						</div>
+    						<div class="col-md-3">
+    							<div class="featured-menus ftco-animate">
+			              <div class="menu-img img" style="background-image: url(images/breakfast-3.jpg);"></div>
+			              <div class="text text-center">
+		                  <h3>Grilled Beef with potatoes</h3>
+				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+			              </div>
+			            </div>
+    						</div>
+    						<div class="col-md-3">
+    							<div class="featured-menus ftco-animate">
+			              <div class="menu-img img" style="background-image: url(images/breakfast-4.jpg);"></div>
+			              <div class="text text-center">
+		                  <h3>Grilled Beef with potatoes</h3>
+				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+			              </div>
+			            </div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+	
+
+
+		
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Not Safe for Hungry</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Open Hours</h2>
+              <ul class="list-unstyled open-hours">
+                <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Friday</span><span>9:00 - 02:00</span></li>
+                <li class="d-flex"><span>Saturday</span><span>9:00 - 02:00</span></li>
+                <li class="d-flex"><span>Sunday</span><span> 9:00 - 02:00</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Instagram</h2>
+              <div class="thumb d-sm-flex">
+	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-1.jpg);">
+	            	</a>
+	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-2.jpg);">
+	            	</a>
+	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-3.jpg);">
+	            	</a>
+	            </div>
+	            <div class="thumb d-flex">
+	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-4.jpg);">
+	            	</a>
+	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-5.jpg);">
+	            	</a>
+	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-6.jpg);">
+	            	</a>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Newsletter</h2>
+            	<p>Far far away, behind the word mountains, far from the countries.</p>
+              <form action="#" class="subscribe-form">
+                <div class="form-group">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+	<!-- Register-->
+	<div class="modal fade" id="RegisterForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  &times;
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<div class="heading-section ftco-animate mb-5 text-center">
+	          	<span class="subheading">Register</span>
+	        </div>
+            <form action="#">
+              <div class="row">
+                <div class="col-md-6">
+				  <div class="form-group">
+					<label >First Name</label>
+					<input id="fname" type="text" class="form-control" placeholder="First Name" required>
+				  </div>
+                </div>
+                <div class="col-md-6">
+				  <div class="form-group">
+					<label>Last Name</label>
+					<input id="lname" type="text" class="form-control" placeholder="Last Name" required>
+				  </div>
+                </div>
+                <div class="col-md-6">
+				  <div class="form-group">
+					<label >Username</label>
+					<input id="username" type="text" class="form-control" placeholder="Username" required>
+				  </div>
+                </div>
+                <div class="col-md-6">
+				  <div class="form-group">
+					<label >Password</label>
+					<input id="password" type="password" class="form-control" placeholder="Password" required>
+				  </div>
+                </div>
+                <div class="col-md-12">
+				  <div class="form-group text-center">
+					<p>
+					<img class="img-fluid rounded" id="myImg" src="img/user.png" alt="your image" >
+						<div class="btn btn-primary btn-sm">
+						  <span>Choose file</span>
+						  <input id="uploadfile" type="file">
+					  </div>					
+					</p>					
+				  </div>
+              </div>
+            </form>
+		  </div>
+		  <div class="modal-footer">
+                <div class="col-md-12 mt-3">
+                  <div class="form-group text-center">
+                    <input id="addBtn" type="button" value="Register" class="btn btn-primary py-3 px-5" data-dismiss="modal">
+                  </div>
+                </div>
+		  </div>
+		</div>
+	  </div>
+	</div>	
+	</div>
+
+	<!--Login-->
+	<div class="modal fade" id="LoginForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  &times;
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<div class="heading-section ftco-animate mb-5 text-center">
+	          	<span class="subheading">Login</span>
+	        </div>
+            <form action="#">
+                <div class="col-md-12">
+				  <div class="form-group">
+					<label >Username</label>
+					<input id="l_username" type="text" class="form-control" placeholder="Username" required>
+				  </div>
+                </div>
+                <div class="col-md-12">
+				  <div class="form-group">
+					<label >Password</label>
+					<input id="l_password" type="password" class="form-control" placeholder="Password" required>
+				  </div>
+                </div>
+            </form>
+		  </div>
+		  <div class="modal-footer">
+                <div class="col-md-12 mt-3">
+                  <div class="form-group text-center">
+                    <input id="loginBtn" type="button" value="Sign-in" class="btn btn-primary py-3 px-5">
+                  </div>
+                </div>
+		  </div>
+		</div>
+	  </div>
+	</div>	
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="js/main.js"></script>
+
+
+        <!--<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>-->
+		<script src="js/SHA256.js"></script>
+		<script src="js/custom.js"></script>
+		
+    </body>
+</html>
+

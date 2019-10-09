@@ -1,0 +1,11 @@
+.fa{
+	cursor:pointer;
+	color:blue;
+}	
+.fa-remove{
+	color:red;
+}	
+
+#myImg{
+	width:150px;
+}
